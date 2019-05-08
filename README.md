@@ -19,6 +19,7 @@
 - ‘Use strict’
 - Preserve ordering of comments
 - Long imports that span multiple lines
+- Block comments in imports
 
 Example api: importlint index.js
 

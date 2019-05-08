@@ -32,7 +32,70 @@ describe('getFileContents', () => {
 });
 
 describe('splitFileByImports', () => {
+  const testArray1 = [
+    `import React, { Compnent } from 'react';`,
+    `class MyComponent extends Component {`
+  ]
+
+  const testArray2 = [
+    `import React, { Compnent } from 'react';`,
+    `// I have no idea what I am doing...`,
+    `import something from 'something`,
+    ``,
+    `class MyComponent extends Component {`
+  ]
+
   it('empty file', () => {
-    expect(cli.splitFileByImports('')).toEqual({ imports: '', body: '' });
+    expect(cli.splitFileByImports([''])).toEqual({ imports: [''], body: [] });
   });
+
+  it('single import', () => {
+    expect(cli.splitFileByImports(testArray1)).toEqual({ 
+      imports: [testArray1[0]],
+      body: [testArray1[1]]
+    })
+  });
+
+  it('multiple imports with comment and white space', () => {
+    expect(cli.splitFileByImports(testArray2)).toEqual({ 
+      imports: testArray2.slice(0, 4),
+      body: [testArray2[4]]
+    })
+  });
+});
+
+describe('groupByComment', () => {
+  it('empty array', () => {
+    expect(cli.groupByComments([])).toEqual([]);
+  });
+
+  it('array of empty string', () => {
+    expect(cli.groupByComments([''])).toEqual(['']);
+  });
+
+  it('single import statement', () => {
+    const input = ['import something'];
+
+    expect(cli.groupByComments(input)).toEqual(input);
+  });
+
+  it('multiple import statements', () => {
+    const input = [
+      'import something',
+      'import anotherThing'
+    ];
+    expect(cli.groupByComments(input)).toEqual(input);
+  });
+
+  it('multiple import statements with comment', () => {
+    const input = [
+      'import something',
+      '// This is not a valid import',
+      'import anotherThing'
+    ];
+
+    expect(cli.groupByComments(input))
+      .toEqual([ input[0], input[1] + '\n' + input[2]]);
+  });
+
 });
