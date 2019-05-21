@@ -1,18 +1,9 @@
 const Se = require('sanctuary-either');
-const cli = require('../cli');
+
+const getFileContents = require('../util/getFileContents');
 
 // TODO: add test for the catch path of fsAccess
 
-describe('validateFilePath', () => {
-  it('invalid file path', async () => {
-    expect(await cli.validateFilePath('./bs/bs.js')).toEqual(Se.Left('Invalid file path'));
-  });
-
-  it('valid file path', async () => {
-    const path = './test/samples/simple.js';
-    expect(await cli.validateFilePath(path)).toEqual(Se.Right(path));
-  });
-});
 
 describe('getFileContents', () => {
   it('empty file', async () => {
