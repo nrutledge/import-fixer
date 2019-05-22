@@ -5,7 +5,7 @@ const S = require('sanctuary');
 // isFromFile :: String -> Bool
 const isFromFile = str => /\/.+['"`]$/.test(str.trim());
 //hasVar :: String -> Bool
-const hasVar = str => /^import\s+[a-zA-Z$]+\s+from/.test(str);
+const hasVar = str => /^import\s.+\s+from/.test(str);
 
 // sortImports :: Array String -> Array String
 module.exports.sortImports = imports => {
@@ -37,7 +37,7 @@ module.exports.sortImports = imports => {
       const i = str.lastIndexOf('\n');
       return i !== -1 ? str.substring(i + 1) : str;
     };
-    return getLastLine(a) >= getLastLine(b);
+    return getLastLine(a) >= getLastLine(b) ? 1 : -1;
   };
   // S.chain == concat . map
   const sortConcat = y => S.chain(inner => inner.sort(compareIgnoringMultiLine))(y);
