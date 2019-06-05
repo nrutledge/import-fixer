@@ -20,6 +20,7 @@
   npm publish
   improve error handling
   prune unused dependancies
+  docs/examples
 
 ## Potential Bugs/edge cases
 
