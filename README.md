@@ -19,6 +19,7 @@
   compiling to executable OR making it behave like command line through npm link
   npm publish
   improve error handling
+  prune unused dependancies
 
 ## Potential Bugs/edge cases
 
