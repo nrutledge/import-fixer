@@ -1,12 +1,9 @@
-const fs = require('fs-extra');
+const fs = require('fs');
 const Se = require('sanctuary-either');
+const { Future } = require('fluture');
+var read = Future.encaseN2(fs.readFile);
 
 //getFileContents :: String -> Either String String
-module.exports.getFileContents = async filePath => {
-  try {
-    const contents = await fs.readFile(filePath, 'utf8');
-    return Se.Right(contents);
-  } catch (err) {
-    return Se.Left(err.toString());
-  }
+module.exports.getFileContents = filePath => {
+  return read(filePath, 'utf8');
 };

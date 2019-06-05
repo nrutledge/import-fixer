@@ -5,7 +5,7 @@
 - Default:single file
 - Feature- blob matching for a list of files
 - Import statement sort options
-- Default: external libraries A-Z, internal modules A-Z, modules that do not bind a variable list, single empty line at the bottom.
+- Default: external libraries A-Z, internal modules A-Z, Classes first (based on capitalization),modules that do not bind a variable list, single empty line at the bottom.
 - Feature- custom sort option
 - Module types/languages
   Default: es6 modules
@@ -13,7 +13,12 @@
 - Output
   Default stdout
   Feature overwrite option
-  Feature output option (output match blob)
+- Tooling -
+  typescript
+  eslint
+  compiling to executable OR making it behave like command line through npm link
+  npm publish
+  improve error handling
 
 ## Potential Bugs/edge cases
 

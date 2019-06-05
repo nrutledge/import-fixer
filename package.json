@@ -17,6 +17,7 @@
     "folktale": "^2.3.2",
     "fs-extra": "^7.0.1",
     "jest": "^24.7.1",
+    "ramda": "^0.26.1",
     "sanctuary": "^1.1.0",
     "sanctuary-def": "^0.20.0",
     "sanctuary-either": "^1.1.0"
