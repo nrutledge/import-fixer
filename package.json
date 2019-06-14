@@ -2,8 +2,9 @@
   "name": "somethingcli",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "cli.js",
   "scripts": {
+    "start": "node --experimental-modules ./cli.js",
     "test": "jest -o",
     "test-watch": "jest -o --watch"
   },
@@ -11,10 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^2.20.0",
+    "fluture": "^11.0.1",
+    "fluture-sanctuary-types": "^4.0.0",
     "folktale": "^2.3.2",
     "fs-extra": "^7.0.1",
     "jest": "^24.7.1",
+    "ramda": "^0.26.1",
     "sanctuary": "^1.1.0",
+    "sanctuary-def": "^0.20.0",
     "sanctuary-either": "^1.1.0"
   },
   "jest": {
