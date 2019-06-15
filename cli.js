@@ -1,14 +1,15 @@
+#!/usr/bin/env node
+
 const { env: flutureEnv } = require('fluture-sanctuary-types');
 const { create, env } = require('sanctuary');
 
 const S = create({ checkTypes: true, env: env.concat(flutureEnv) });
-const { Future, map, chain } = require('fluture');
+const { Future } = require('fluture');
 
 const { getFileContents } = require('./util/getFileContents');
 const { groupByComments } = require('./util/groupByComments');
 const { sortImports } = require('./util/sortImports');
 const { splitFileByImports } = require('./util/splitFileByImports');
-const { validateFilePath } = require('./util/validateFilePath');
 
 const R = require('ramda');
 
@@ -50,7 +51,7 @@ const main = () => {
     return [grouped.imports.join('\n'), '\n\n', grouped.body.join('\n')].join('');
   });
 
-  result.fork(console.log, console.log);
+  result.fork(console.error, console.log);
 };
 
 main();
