@@ -1,1 +1,4 @@
 node_modules
+cli-linux
+cli-macos
+cli-win.exe

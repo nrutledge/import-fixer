@@ -1,44 +1,25 @@
-# What is it: A CLI tool that analizes import statements and orders them
+# importlint
 
-## Files to parse
+## What is it?
 
-- Default:single file
-- Feature- blob matching for a list of files
-- Import statement sort options
-- Default: external libraries A-Z, internal modules A-Z, Classes first (based on capitalization),modules that do not bind a variable list, single empty line at the bottom.
-- Feature- custom sort option
-- Module types/languages
-  Default: es6 modules
-  Feature: commonjs
-- Output
-  Default stdout
-  Feature overwrite option
-- Tooling -
-  typescript
-  eslint
-  compiling to executable OR making it behave like command line through npm link
-  npm publish
-  improve error handling
-  prune unused dependancies
-  docs/examples
+A CLI tool that analyzes import statements and orders them according to the following:
+- External libraries first, then Internal modules
+- By assigned variable name: A-Z, a-z (Classes first, based on capitalization). Modules that do not bind a variable such as css imports come last
 
-## Potential Bugs/edge cases
+## Usage
 
-- common JS dynamic imports with arguments that depend on each other
-- ‘Use strict’
-- Preserve ordering of comments
-- Long imports that span multiple lines
-- Block comments in imports
+Provide a filepath to be linted. 
 
-Example api: importlint index.js
+**Example:** `importlint ./path/to/myfile.js`
 
-## Workflow
+Outputs to standard output with linted file. This can be piped over the target file in bash as shown:
 
-- Check that the file exists
-- read into memory
-- Divide import statements from code
-- Group lines
-- Sort groups (recusive)
-- Turn sorted structure back to a string
-- Append sorted import string to code
-- output
+**Output to new file:**
+`importlint ./path/to/myfile.js > ./path/to/newfile.js`
+
+**Output to same file:**
+`importlint ./path/to/myfile.js > ./.tmp ; cp ./.tmp ./path/to/myfile.js ; rm ./.tmp;`
+
+**WARNING:** Do not use first command to pipe to the same file -- it will overwrite it with an empty file.
+
+Note: currently operates ONLY on es2015 style modules (`import...`), does not operate on commonJS modules(`require...`)

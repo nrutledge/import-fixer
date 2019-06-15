@@ -1,6 +1,6 @@
 {
-  "name": "somethingcli",
-  "version": "1.0.0",
+  "name": "importlint",
+  "version": "0.1.2",
   "description": "",
   "main": "cli.js",
   "scripts": {
@@ -10,17 +10,20 @@
   },
   "author": "",
   "license": "ISC",
+  "bin": {
+    "importlint": "./cli.js"
+  },
   "dependencies": {
     "commander": "^2.20.0",
     "fluture": "^11.0.1",
     "fluture-sanctuary-types": "^4.0.0",
-    "folktale": "^2.3.2",
-    "fs-extra": "^7.0.1",
-    "jest": "^24.7.1",
     "ramda": "^0.26.1",
     "sanctuary": "^1.1.0",
     "sanctuary-def": "^0.20.0",
     "sanctuary-either": "^1.1.0"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1"
   },
   "jest": {
     "verbose": true

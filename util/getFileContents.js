@@ -1,5 +1,4 @@
 const fs = require('fs');
-const Se = require('sanctuary-either');
 const { Future } = require('fluture');
 var read = Future.encaseN2(fs.readFile);
 
